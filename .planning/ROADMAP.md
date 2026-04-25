@@ -11,16 +11,16 @@
 
 | # | Fase | Dev Responsável | Requisitos | Critérios de Sucesso |
 |---|------|----------------|------------|---------------------|
-| 1 | Auth & Foundation | Dev 1 | AUTH-01..07 | 7 critérios |
-| 2 | Schema & Migrations | Dev 1 | DB-01..06 | 6 critérios |
-| 3 | CRUD de Ordens de Serviço | Dev 2 | OS-01..07 | 7 critérios |
-| 4 | Máquina de Estado de OS | Dev 2 | SM-01..08 | 8 critérios |
-| 5 | Gestão de Técnicos | Dev 3 | TECH-01..06 | 6 critérios |
-| 6 | Dashboard & Métricas | Dev 3 | DASH-01..06 | 6 critérios |
-| 7 | Feed de Atividades | Dev 2 ou 3 | ACT-01..05 | 5 critérios |
-| 8 | Notificações | Dev 2 ou 3 | NOTF-01..04 | 4 critérios |
-| 9 | Busca Global | Dev 2 ou 3 | SRCH-01..04 | 4 critérios |
-| 10 | Segurança & Hardening | Todos (revisão) | SEC-01..04 | 4 critérios |
+| 1 | Auth & Foundation | **Wellison** (Arquitetura/Backend) | AUTH-01..07 | 7 critérios |
+| 2 | Schema & Migrations | **Wellison** (Arquitetura/Backend) | DB-01..06 | 6 critérios |
+| 3 | CRUD de Ordens de Serviço | Dev 2 (a definir) | OS-01..07 | 7 critérios |
+| 4 | Máquina de Estado de OS | Dev 2 (a definir) | SM-01..08 | 8 critérios |
+| 5 | Gestão de Técnicos | Dev 3 (a definir) | TECH-01..06 | 6 critérios |
+| 6 | Dashboard & Métricas | Dev 3 (a definir) | DASH-01..06 | 6 critérios |
+| 7 | Feed de Atividades | Dev 2 ou Dev 3 | ACT-01..05 | 5 critérios |
+| 8 | Notificações | Dev 2 ou Dev 3 | NOTF-01..04 | 4 critérios |
+| 9 | Busca Global | Dev 2 ou Dev 3 | SRCH-01..04 | 4 critérios |
+| 10 | Segurança & Hardening | **Wellison** + revisão geral | SEC-01..04 | 4 critérios |
 | 11 | Documentação Final | Todos | DOC-01..05 | 5 critérios |
 
 ---
@@ -28,7 +28,7 @@
 ## Fase 1 — Auth & Foundation
 
 **Goal:** Sistema de autenticação funcional com roles e middleware protetor de rotas
-**Owner:** Dev 1
+**Owner:** Wellison (Arquitetura & Backend)
 **Dependencies:** Nenhuma — é a fase raiz
 **UI hint:** no
 
@@ -59,7 +59,7 @@
 ## Fase 2 — Schema & Migrations
 
 **Goal:** Banco de dados estruturado com todas as tabelas, relacionamentos, índices e triggers
-**Owner:** Dev 1
+**Owner:** Wellison (Arquitetura & Backend)
 **Dependencies:** Fase 1 (projeto Supabase configurado)
 **UI hint:** no
 
@@ -89,7 +89,7 @@
 ## Fase 3 — CRUD de Ordens de Serviço
 
 **Goal:** API REST completa para criação, leitura, edição e listagem de OS
-**Owner:** Dev 2
+**Owner:** Dev 2 (a definir)
 **Dependencies:** Fase 1 (auth middleware), Fase 2 (schema)
 **UI hint:** no
 
@@ -117,7 +117,7 @@
 ## Fase 4 — Máquina de Estado de OS
 
 **Goal:** Transições de status controladas, atômicas e com efeitos colaterais corretos
-**Owner:** Dev 2
+**Owner:** Dev 2 (a definir)
 **Dependencies:** Fase 3 (CRUD de OS)
 **UI hint:** no
 
@@ -145,7 +145,7 @@
 ## Fase 5 — Gestão de Técnicos
 
 **Goal:** API CRUD de técnicos com controle de status e listagem em campo
-**Owner:** Dev 3
+**Owner:** Dev 3 (a definir)
 **Dependencies:** Fase 1 (auth), Fase 2 (schema)
 **UI hint:** no
 
@@ -172,7 +172,7 @@
 ## Fase 6 — Dashboard & Métricas
 
 **Goal:** Endpoints agregados que alimentam o dashboard com dados e gráficos
-**Owner:** Dev 3
+**Owner:** Dev 3 (a definir)
 **Dependencies:** Fase 3 (OS), Fase 5 (Técnicos)
 **UI hint:** no
 
@@ -197,7 +197,7 @@
 ## Fase 7 — Feed de Atividades
 
 **Goal:** Feed cronológico de eventos com suporte a real-time via Supabase Realtime
-**Owner:** Dev 2 ou Dev 3
+**Owner:** Dev 2 ou Dev 3 (a definir)
 **Dependencies:** Fase 2 (schema/triggers), Fase 3 e Fase 5
 **UI hint:** no
 
@@ -221,7 +221,7 @@
 ## Fase 8 — Notificações
 
 **Goal:** Sistema de notificações persistido com contagem não lida e real-time
-**Owner:** Dev 2 ou Dev 3
+**Owner:** Dev 2 ou Dev 3 (a definir)
 **Dependencies:** Fase 2 (schema), Fase 3 (OS triggers)
 **UI hint:** no
 
@@ -246,7 +246,7 @@
 ## Fase 9 — Busca Global
 
 **Goal:** Endpoint de busca full-text que cobre OS, clientes e técnicos
-**Owner:** Dev 2 ou Dev 3
+**Owner:** Dev 2 ou Dev 3 (a definir)
 **Dependencies:** Fase 3 (OS), Fase 5 (Técnicos)
 **UI hint:** no
 
@@ -270,7 +270,7 @@
 ## Fase 10 — Segurança & Hardening
 
 **Goal:** Auditoria e reforço de segurança em toda a API antes do lançamento
-**Owner:** Todos (revisão cruzada)
+**Owner:** Wellison (liderado) + revisão cruzada do time
 **Dependencies:** Todas as fases anteriores
 **UI hint:** no
 
@@ -294,7 +294,7 @@
 ## Fase 11 — Documentação Final
 
 **Goal:** Documentação completa para onboarding de novos devs e para criação do app mobile
-**Owner:** Todos
+**Owner:** Todos (liderado por Wellison — visão de arquitetura)
 **Dependencies:** Todas as fases anteriores
 **UI hint:** no
 
@@ -321,23 +321,23 @@
 
 ```
 Semana 1:
-  Dev 1: Fase 1 (Auth) → Fase 2 (Schema)
-  Dev 2: Aguarda Fase 1 → Planeja Fase 3
-  Dev 3: Aguarda Fase 1 → Planeja Fase 5
+  Wellison: Fase 1 (Auth & Foundation) → Fase 2 (Schema & Migrations)
+  Dev 2:    Aguarda Fase 1 → Planeja Fase 3 com o GSD
+  Dev 3:    Aguarda Fase 1 → Planeja Fase 5 com o GSD
 
 Semana 2:
-  Dev 1: Suporte e revisão
-  Dev 2: Fase 3 (CRUD OS) → Fase 4 (State Machine)
-  Dev 3: Fase 5 (Técnicos) → Fase 6 (Dashboard)
+  Wellison: Suporte técnico + revisão de código
+  Dev 2:    Fase 3 (CRUD OS) → Fase 4 (State Machine)
+  Dev 3:    Fase 5 (Técnicos) → Fase 6 (Dashboard)
 
 Semana 3:
-  Dev 2: Fase 7 (Feed) ou Fase 9 (Busca)
-  Dev 3: Fase 8 (Notificações) ou Fase 7 (Feed)
-  Dev 1: Fase 10 (Segurança) — após fases 2-9 completas
+  Dev 2:    Fase 7 (Feed) ou Fase 9 (Busca)
+  Dev 3:    Fase 8 (Notificações) ou Fase 7 (Feed)
+  Wellison: Fase 10 (Segurança & Hardening) — conduz a revisão
 
 Semana 4:
-  Todos: Fase 11 (Documentação)
-  Todos: Testes integrados e review final
+  Wellison: Lidera Fase 11 (Documentação Final — visão de arquitetura)
+  Todos:    Testes integrados e review final
 ```
 
 ---
