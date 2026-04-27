@@ -1,3 +1,4 @@
+
 # PITFALLS.md — OS Manager
 
 ## 1. RLS — Políticas Mal Configuradas

@@ -9,6 +9,8 @@
 
 ### Autenticação & Autorização (AUTH)
 
+- [ ] **AUTH-UI-01**: Página de Login responsiva com tema escuro premium
+- [ ] **AUTH-UI-02**: Feedback visual de erro (Login inválido)
 - [ ] **AUTH-01**: Admin pode fazer login com email e senha via Supabase Auth
 - [ ] **AUTH-02**: Sessão persiste entre refreshes de página (cookies HttpOnly via @supabase/ssr)
 - [ ] **AUTH-03**: Admin pode fazer logout de qualquer página
@@ -28,6 +30,9 @@
 
 ### Ordens de Serviço — CRUD (OS)
 
+- [ ] **OS-UI-01**: Dashboard com listagem de OS e filtros (Status, Técnico, Data)
+- [ ] **OS-UI-02**: Modal/Página para criação de nova OS
+- [ ] **OS-UI-03**: Visualização detalhada da OS com histórico de atividades
 - [ ] **OS-01**: Admin pode criar uma nova OS com: client_name, service_type, description, technician_id (opcional), scheduled_at (opcional)
 - [ ] **OS-02**: Admin pode listar OS com filtros por: status, technician_id, intervalo de data
 - [ ] **OS-03**: API de listagem de OS suporta paginação (limit + cursor ou page)
