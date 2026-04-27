@@ -30,11 +30,12 @@ export async function POST(request: Request) {
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: error.errors[0].message },
+        { error: error.issues[0].message },
         { status: 422 }
       )
     }
 
+    console.error('Login Error:', error)
     return NextResponse.json(
       { error: 'Erro interno do servidor' },
       { status: 500 }
