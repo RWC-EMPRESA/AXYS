@@ -20,6 +20,22 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## 🚀 Como Começar
+
+Se você é um desenvolvedor do time, siga estes passos:
+
+1. **Clone o repositório:** `git clone https://github.com/RWC-EMPRESA/AXYS.git`
+2. **Leia o [Guia de Contribuição](CONTRIBUTING.md):** Para entender como usar o Agente de IA (GSD) e as regras de Git.
+3. **Explore o Planejamento:** Tudo sobre o futuro do projeto está na pasta [`.planning/`](.planning/).
+4. **Instale as dependências:** `npm install`
+
+## 🛠️ Stack Tecnológica
+
+- **Frontend/Backend:** Next.js (App Router)
+- **Banco de Dados:** Supabase (PostgreSQL)
+- **Estilização:** Tailwind CSS
+- **Segurança:** Supabase Auth + RLS (Row Level Security)
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
