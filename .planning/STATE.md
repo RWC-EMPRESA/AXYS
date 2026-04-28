@@ -13,7 +13,7 @@ See: .planning/PROJECT.md (updated 2026-04-25)
 ## Current Phase
 
 **Phase:** 1 — Setup & Auth (Backend)
-**Status:** In Progress
+**Status:** Done
 **Owner:** Wellison (Backend/Architecture)
 
 ---
@@ -23,7 +23,7 @@ See: .planning/PROJECT.md (updated 2026-04-25)
 | Phase | Name | Status | Completed |
 |-------|------|--------|-----------|
 | — | Initialization | ✓ Done | 2026-04-25 |
-| 1 | Setup & Auth | [/] In Progress | - |
+| 1 | Setup & Auth | ✓ Done | 2026-04-28 |
 
 ---
 
