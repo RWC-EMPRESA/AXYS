@@ -1,0 +1,8 @@
+### Teste de Login Inválido
+POST http://localhost:3000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "teste@rwc.com.br",
+  "password": "senha_qualquer"
+}
