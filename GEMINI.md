@@ -80,13 +80,13 @@ Sistema de gestão de Ordens de Serviço (OS) para a empresa RWC Digital. O prod
 <!-- GSD:conventions-start source:CONVENTIONS.md -->
 ## Conventions
 
-Conventions not yet established. Will populate as patterns emerge during development.
+Conventions have been established. See `.planning/CONVENTIONS.md` for API Routes, Zod, and Supabase guidelines.
 <!-- GSD:conventions-end -->
 
 <!-- GSD:architecture-start source:ARCHITECTURE.md -->
 ## Architecture
 
-Architecture not yet mapped. Follow existing patterns found in the codebase.
+Architecture is now documented. See `.planning/ARCHITECTURE.md` for database schema, state machine, and module breakdown.
 <!-- GSD:architecture-end -->
 
 <!-- GSD:workflow-start source:GSD defaults -->
