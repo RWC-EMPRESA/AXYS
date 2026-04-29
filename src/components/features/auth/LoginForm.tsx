@@ -37,9 +37,9 @@ export default function LoginForm() {
     const result = loginSchema.safeParse(formData);
     if (!result.success) {
       const fieldErrors: Partial<Record<keyof LoginFormData, string>> = {};
-      result.error.errors.forEach((err) => {
-        const field = err.path[0] as keyof LoginFormData;
-        fieldErrors[field] = err.message;
+      result.error.issues.forEach((issue: z.ZodIssue) => {
+        const field = issue.path[0] as keyof LoginFormData;
+        fieldErrors[field] = issue.message;
       });
       setErrors(fieldErrors);
       return;
