@@ -1,9 +1,24 @@
 'use client';
 
-import React from 'react';
-import { Search, Bell } from 'lucide-react';
+import React, { useState } from 'react';
+import { Search, Bell, LogOut, Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
+  const router = useRouter();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    try {
+      await fetch('/api/v1/auth/logout', { method: 'POST' });
+    } finally {
+      // Redireciona independente de sucesso/falha na API
+      router.push('/login');
+      router.refresh();
+    }
+  };
+
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-background/60 border-b border-white/5 px-6 lg:px-12 py-4 flex items-center justify-between transition-all">
       
@@ -48,6 +63,21 @@ export default function Header() {
             <span className="text-sm font-bold text-primary">RF</span>
           </div>
         </div>
+
+        {/* Logout Button */}
+        <button
+          onClick={handleLogout}
+          disabled={isLoggingOut}
+          title="Sair do sistema"
+          className="p-2 text-gray-400 hover:text-danger transition-colors rounded-full hover:bg-danger/10 disabled:opacity-50 disabled:cursor-not-allowed"
+          aria-label="Sair do sistema"
+        >
+          {isLoggingOut ? (
+            <Loader2 className="w-5 h-5 animate-spin" />
+          ) : (
+            <LogOut className="w-5 h-5" />
+          )}
+        </button>
 
       </div>
     </header>

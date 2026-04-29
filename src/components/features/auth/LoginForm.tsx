@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 import { Eye, EyeOff, Loader2, AlertCircle } from 'lucide-react';
 
@@ -12,6 +13,7 @@ const loginSchema = z.object({
 type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState<LoginFormData>({ email: '', password: '' });
   const [errors, setErrors] = useState<Partial<Record<keyof LoginFormData, string>>>({});
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +23,6 @@ export default function LoginForm() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear errors when typing
     if (errors[name as keyof LoginFormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -30,9 +31,49 @@ export default function LoginForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setGlobalError(null);
+
+    // Validação client-side com Zod
+    const result = loginSchema.safeParse(formData);
+    if (!result.success) {
+      const fieldErrors: Partial<Record<keyof LoginFormData, string>> = {};
+      result.error.errors.forEach((err) => {
+        const field = err.path[0] as keyof LoginFormData;
+        fieldErrors[field] = err.message;
+      });
+      setErrors(fieldErrors);
+      return;
+    }
+
     setIsLoading(true);
-    // Bypass absoluto para o Rafael testar o visual do Dashboard
-    window.location.href = '/dashboard';
+
+    try {
+      const response = await fetch('/api/v1/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // 401 = credenciais inválidas, outros = erro genérico
+        if (response.status === 401) {
+          setGlobalError('E-mail ou senha incorretos. Verifique suas credenciais.');
+        } else {
+          setGlobalError(data?.error?.message ?? 'Ocorreu um erro inesperado. Tente novamente.');
+        }
+        return;
+      }
+
+      // Sucesso — redireciona para o dashboard
+      router.push('/dashboard');
+      router.refresh(); // garante que o middleware relê a sessão
+    } catch {
+      setGlobalError('Não foi possível conectar ao servidor. Verifique sua conexão.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -59,6 +100,7 @@ export default function LoginForm() {
             onChange={handleChange}
             className={`glass-input ${errors.email ? 'border-danger focus:border-danger focus:ring-danger' : ''}`}
             disabled={isLoading}
+            autoComplete="email"
           />
         </div>
         {errors.email && <p className="text-xs text-danger">{errors.email}</p>}
@@ -78,12 +120,14 @@ export default function LoginForm() {
             onChange={handleChange}
             className={`glass-input pr-10 ${errors.password ? 'border-danger focus:border-danger focus:ring-danger' : ''}`}
             disabled={isLoading}
+            autoComplete="current-password"
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300 transition-colors"
             tabIndex={-1}
+            aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
           >
             {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </button>
